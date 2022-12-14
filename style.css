@@ -20,7 +20,6 @@ body {
     width: 100%;
     border-spacing: 0px;
     font-family: "proxima-nova", sans-serif;
-    
 }
 
 .table-head--row {
@@ -169,7 +168,26 @@ th {
     width: 8px;
     height: 8px;
     border-radius: 50%;
+}
+
+.blank {
+    border: 1px solid #4F4F4F;
+}
+
+.green {
     background-color: #27AE60;
+}
+
+.red {
+    background-color: #EB5757;
+}
+
+.yellow {
+    background-color: #F2C94C;
+}
+
+.gray {
+    background-color: #BDBDBD;
 }
 
 .body-row--websites {
@@ -215,7 +233,6 @@ th {
 }
 
 .website-section {
-    z-index: 1;
     position: relative;
     width: 297px;
     height:56px;
@@ -227,17 +244,11 @@ th {
     font-size: 14px;
     line-height: 22px;
     color: #646569;
+    background: #ffffff80;
 }
 
-.website-section::before {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    left: 1px;
-    width: 295px;
-    height: 54px;
-    background: #FFFFFF;
-    opacity: 0.8;
+.website-section:hover {
+    background: #F6F9FD;
 }
 
 .website-section--iconbox {
@@ -268,6 +279,7 @@ th {
 }
 
 .tooltip {
+    z-index: 1;
     position: absolute;
     box-sizing: border-box;
     background: #3E3F42;
@@ -306,6 +318,7 @@ th {
 }
 
 .dropdown-menu {
+    z-index: 1;
     display: none;
     position: absolute;
     height: 152px;
