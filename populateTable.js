@@ -38,9 +38,98 @@ const getStatus = (statusCode) => {
     return status[+statusCode];
 }
 
-const populateTableWebgroups = (name, statusCode) => {
+const getWebsiteSectionHTML = (section) => {
+    const status = getStatus(section.status);
+    const websiteSection =
+    `
+    <div class="website-section">
+        <div class="website-section--checkbox">
+        </div>
+        ${section.name}
+        <div class="website-section--iconbox" >
+            <div class="status-icon ${status.icon}">
+                <div class="tooltip">
+                    <p>${status.label}</p>
+                </div>
+            </div>
+        </div>
+        <div class="website-section--menu">
+            <div class="dropdown-menu--container">
+                <div class="oval"></div>
+                <div class="oval"></div>
+                <div class="oval"></div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-menu--header">
+                        Generate tags as
+                    </div>
+                    <div class="dropdown-menu--row">
+                        Numeric ID
+                    </div>
+                    <div class="dropdown-menu--row">
+                        Amp Code
+                    </div>
+                    <div class="dropdown-menu--row">
+                        String Code
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+    return websiteSection;
+}
+
+const addSectionsGroup = (sectionsGroup) => {
+    let groupedSections = 
+    `
+    <div class="website-sections--container">
+        ${sectionsGroup}
+    </div>    
+    `;
+
+    return groupedSections;
+}
+
+const getAllSectionsHTML = (sections) => {
+    let websiteSectionsHTML = ``
+    let sectionsGroup = ``
+    sections.map((section, index) => {
+        if (sections.length - 1 === 0) {
+            websiteSectionsHTML += addSectionsGroup(getWebsiteSectionHTML(section));
+        } else if (index % 4 === 0 && index === sections.length -1) {
+            websiteSectionsHTML += addSectionsGroup(sectionsGroup) ;
+
+            sectionsGroup = 
+            `
+            ${getWebsiteSectionHTML(section)}
+            `;
+
+            websiteSectionsHTML += addSectionsGroup(sectionsGroup);
+
+        } else if (index === sections.length - 1) {
+            sectionsGroup += getWebsiteSectionHTML(section);
+
+            websiteSectionsHTML += addSectionsGroup(sectionsGroup);
+
+        } else if (index > 0 && index % 4 === 0) {
+            websiteSectionsHTML += addSectionsGroup(sectionsGroup) ;
+
+            sectionsGroup = 
+            `
+            ${getWebsiteSectionHTML(section)}
+            `;
+
+        } else {
+            sectionsGroup += getWebsiteSectionHTML(section);
+        }
+    });
+
+    return websiteSectionsHTML;
+}
+
+const populateTableWebgroup = (name, statusCode, sections) => {
     const status = getStatus(statusCode)
-    const tables = document.querySelectorAll(".main-table");
+    const tables = document.querySelectorAll(".table-body");
     const container = tables[tables.length - 1];
     const tableRow = document.createElement("tr");
     tableRow.className = "body-row--webgroup";
@@ -57,7 +146,7 @@ const populateTableWebgroups = (name, statusCode) => {
         ${name}
     </td>
     <td class=body-row--column2>
-        24
+        ${sections.length}
     </td>
     <td class="body-row--column3">
         <div class="status-iconbox">
@@ -69,13 +158,38 @@ const populateTableWebgroups = (name, statusCode) => {
 
     tableRow.innerHTML = webgroup;
     container.appendChild(tableRow);
+
+    const sectionsHeader = document.createElement("tr");
+    sectionsHeader.className = "website-sections--header";
+    sectionsHeader.innerHTML = 
+    `
+    <th class="website-header" colspan="3">
+        Website Sections
+    </th>
+    `;
+    container.appendChild(sectionsHeader);
+
+    const sectionsHTML = getAllSectionsHTML(sections);
+    const websiteSections = document.createElement("tr");
+    websiteSections.className = "website-sections--row";
+    websiteSections.innerHTML = 
+    `
+    <td colspan="3">
+        <div class="website-sections--body">
+            ${sectionsHTML}
+        </div>
+    </td>
+    `;
+    container.appendChild(websiteSections);
 }
 
 const populateTable = async() => {
     const websitesData = await fetchWebsitesData();
     websitesData.result.map(item => {
         populateTableOrgranization(item.name);
-        item.websites.map(item => populateTableWebgroups(item.name, item.status))
+        item.websites.map(item => {
+            populateTableWebgroup(item.name, item.status, item.sections)
+        });
     });
     
 
