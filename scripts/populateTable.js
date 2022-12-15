@@ -142,7 +142,7 @@ const populateTableWebgroup = (name, statusCode, sections) => {
         <div class="table-column--arrowbox">
             <div class="arrow"></div>
         </div>
-        <img class="table-column--icon" src="./Assets/icon.png" alt="webgroup-icon">
+        <img class="table-column--icon" src="./assets/icon.png" alt="webgroup-icon">
         ${name}
     </td>
     <td class=body-row--column2>

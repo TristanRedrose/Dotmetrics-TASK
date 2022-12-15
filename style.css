@@ -102,7 +102,13 @@ th {
     height: 0;
     border-style: solid;
     border-width: 5px 4px 0 4px;
+    border-color: #9EA0A5 transparent transparent transparent;
+    transform: rotate(-90deg);
+}
+
+.dropped {
     border-color: #0068ED transparent transparent transparent;
+    transform: rotate(0deg);
 }
 
 .body-row--webgroup {
@@ -114,6 +120,7 @@ th {
     line-height: 22px;
     color: #646569;
     font-weight: 500;
+    display: none;
 }
 
 .body-row--webgroup:hover {
@@ -206,6 +213,7 @@ th {
     height: 20px;
     background: linear-gradient(0deg, #F7F8FA, #F7F8FA), linear-gradient(180deg, rgba(245, 245, 245, 0) 0%, #FFFFFF 100%);
     box-shadow: inset 1px 0px 0px #EAEDF3, inset -1px 0px 0px #EAEDF3, inset 0px -1px 0px #EAEDF3;
+    display: none;
 }
 
 .website-header {
@@ -215,6 +223,7 @@ th {
 .website-sections--row {
     background: linear-gradient(0deg, rgba(234, 237, 243, 0.4), rgba(234, 237, 243, 0.4)), #FFFFFF;
     box-shadow: inset 1px 0px 0px #EAEDF3, inset -1px 0px 0px #EAEDF3, inset 0px -1px 0px #EAEDF3;
+    display: none;
 }
 
 .website-sections--body{
@@ -370,4 +379,8 @@ th {
 
 .website-section--menu:hover .dropdown-menu {
     display: block;
+}
+
+.active {
+    display: table-row;
 }
