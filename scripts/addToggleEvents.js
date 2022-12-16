@@ -4,23 +4,29 @@ const toggleElementIsActive = (element, setAsActive) => {
         : element.className.replace(" active", "");
 }
 
-const toggleArrow = (element, setAsActive) => {
+const toggleArrowActive = (element, setAsActive) => {
     element.className = setAsActive
         ? element.className + " dropped"
         : element.className.replace(" dropped", "");
 }
 
 const closeInnerSections = (element) => {
-    const activeElements = element.querySelectorAll(".active");
-    const activeArrows = element.querySelectorAll(".dropped");
+    let activeElements = element.querySelectorAll(".active");
+    let activeArrows = element.querySelectorAll(".dropped");
+    console.log(activeElements);
+    console.log(activeArrows);
 
-    activeElements.forEach(activeElement => {
-        toggleElementIsActive(activeElement, false);
-    });
+    if (activeElements.length !== 0) {
+        activeElements.forEach(activeElement => {
+            toggleElementIsActive(activeElement, false);
+        });
+    }
 
-    activeArrows.forEach(activeArrow => {
-        toggleArrow(activeArrow, false);
-    });
+    if (activeArrows.length !== 0) {
+        activeArrows.forEach(activeArrow => {
+            toggleArrowActive(activeArrow, false);
+        });
+    }
 }
 
 const addWebgroupToggle = () => {
@@ -30,19 +36,16 @@ const addWebgroupToggle = () => {
         organization.addEventListener('click', () => {
             const parentElement = organization.parentNode;
             const arrow = parentElement.querySelector(".arrow");
-            const webgroupClassName = "body-row--webgroup";
-            const arrowClassName = "arrow";
-            const webgroups = parentElement.querySelectorAll(`.${webgroupClassName}`);
+            const webgroups = parentElement.querySelectorAll(".body-row--webgroup");
 
-            webgroups.forEach(webgroup => {
-                if (webgroup.className === `body-row--webgroup active`) {
-                    toggleElementIsActive(webgroup, false);
-                    if (arrow.className !== `${arrowClassName}`) toggleArrow(arrow, false);
-                } else {
+            if (parentElement.querySelectorAll(".active").length !== 0) {
+                closeInnerSections(parentElement)
+            } else {
+                webgroups.forEach(webgroup => {
                     toggleElementIsActive(webgroup, true);
-                    if (arrow.className !== `${arrowClassName} dropped`) toggleArrow(arrow, true);
-                }
-            })
+                    if (arrow.className !== "arrow dropped") toggleArrowActive(arrow, true);  
+                })
+            }
         })
     })
 };
@@ -60,11 +63,11 @@ const addSectionsToggle = (element) => {
             if (sectionsHeader.className === `website-sections--header active`) {
                 toggleElementIsActive(sectionsHeader, false);
                 toggleElementIsActive(websiteSections, false);
-                if (arrow.className !== `arrow`) toggleArrow(arrow, false);
+                if (arrow.className !== `arrow`) toggleArrowActive(arrow, false);
             } else {
                 toggleElementIsActive(sectionsHeader, true);
                 toggleElementIsActive(websiteSections, true);
-                if (arrow.className !== `arrow dropped`) toggleArrow(arrow, true);
+                if (arrow.className !== `arrow dropped`) toggleArrowActive(arrow, true);
             }
         })
     })
@@ -74,7 +77,3 @@ const addToggleEvents = () => {
     addWebgroupToggle();
     addSectionsToggle();
 }
-
-setTimeout(() => {
-    addToggleEvents();
-}, 1000)

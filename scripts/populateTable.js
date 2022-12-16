@@ -1,20 +1,24 @@
 const fetchWebsitesData = async() => {
-    return fetch("https://demo-api.dotmetrics.net/v1/public/organizations/list?pageSize=12&page=1", {method: "GET"})
+    return fetch("https://demo-api.dotmetrics.net/v1/public/organizations/list?pageSize=25&page=1", {method: "GET"})
         .then(res => res.json())
         .catch(err => console.warn("Something went wrong while fetching data", err));
 }
 
-const populateTableOrgranization = (organizationName) => {
+const populateTableOrgranization = (index, organizationName) => {
     const table = document.querySelector(".main-table");
     const tableBody = document.createElement("tbody");
     tableBody.className = "table-body";
+
+    let arrowClass =  index 
+        ? "arrow"
+        : "arrow dropped";
 
     const organizationRow = 
     `
     <tr class="body-row--organization">
         <th class="body-head--company" colspan="3">
             <div class="body-head--arrowbox">
-                <div class="arrow"></div>
+                <div class="${arrowClass}"></div>
             </div>
             ${organizationName}
         </th> 
@@ -127,12 +131,14 @@ const getAllSectionsHTML = (sections) => {
     return websiteSectionsHTML;
 }
 
-const populateTableWebgroup = (name, statusCode, sections) => {
+const populateTableWebgroup = (index, name, statusCode, sections) => {
     const status = getStatus(statusCode)
     const tables = document.querySelectorAll(".table-body");
     const container = tables[tables.length - 1];
     const tableRow = document.createElement("tr");
-    tableRow.className = "body-row--webgroup";
+    tableRow.className = index
+        ? "body-row--webgroup"
+        : "body-row--webgroup active";
 
     const webgroup = 
     `
@@ -185,15 +191,20 @@ const populateTableWebgroup = (name, statusCode, sections) => {
 
 const populateTable = async() => {
     const websitesData = await fetchWebsitesData();
-    websitesData.result.map(item => {
-        populateTableOrgranization(item.name);
+    websitesData.result.map((item, index) => {
+        populateTableOrgranization(index, item.name);
         item.websites.map(item => {
-            populateTableWebgroup(item.name, item.status, item.sections)
+            populateTableWebgroup(index, item.name, item.status, item.sections)
         });
     });
-    
 
     console.log(websitesData);
 }
 
-populateTable();
+const pageInit = async() => {
+    await populateTable();
+
+    addToggleEvents();
+}
+
+pageInit();
