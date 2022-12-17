@@ -10,24 +10,58 @@
     <title>Dotmetrics-TASK</title>
 </head>
 <body>
-    <article class="main-container">
-        <table class="main-table">
-            <thead class="table-head">
-                <tr class="table-head--row">
-                    <th class="table-column1">
-                        <div class="table-head--checkbox">
-                        </div>
-                        Website
-                    </th>
-                    <th class="table-column2">
-                        Sections
-                    </th>
-                    <th class="table-column3">
-                        Status
-                    </th>
-                </tr>
-            </thead>
-        </table>
-    </article>
+    <div class="body-container">
+        <article class="table-container">
+            <table class="main-table">
+                <thead class="table-head">
+                    <tr class="table-head--row">
+                        <th class="table-column1">
+                            <div class="table-head--checkbox">
+                            </div>
+                            Website
+                        </th>
+                        <th class="table-column2">
+                            Sections
+                        </th>
+                        <th class="table-column3">
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </article>
+        <div class="pagination-container">
+            <p class="pagination-menu--label">Show rows:</p>
+            <div class="pagination-menu--button">
+                <p class="pagination-menu--text">25</p>
+                <div class="pagination-arrowbox">
+                    <div class="arrow"></div>
+                </div>
+            </div>
+            <div class="pagination-dropdown--menu">
+                <div class="pagination-menu--select">
+                    <span>25</span>
+                </div>
+                <div class="pagination-menu--select">
+                    <span>50</span>
+                </div>
+                <div class="pagination-menu--select">
+                    <span>100</span>
+                </div>
+                <div class="pagination-menu--select">
+                    <span>150</span>
+                </div>
+            </div>
+            <div class="pagination-separator--1"></div>
+            <p class="pagination-items--label">1 - 25 of 345</p>
+            <button class="previous-page--button">
+                <img class="pagination-arrow" src="./assets/arrow-left.png" alt="arrow-left">
+            </button>
+            <div class="pagination-separator--2"></div>
+            <button class="next-page--button">
+                <img class="pagination-arrow" src="./assets/arrow-right.png" alt="arrow-right">
+            </button>
+        </div>
+    </div>
 </body>
 </html>

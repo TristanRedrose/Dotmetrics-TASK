@@ -1,19 +1,25 @@
 body {
     margin: 0px;
-    display: flex;
-    justify-content: center;
     background-color: #f8f8fa;
 }
 
-.main-container {
+.body-container {
+    position: relative;
+    width: 1420px;
+    height: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.table-container {
     width: 1110px;
     height: 776px;
     margin-top: 51px;
-    margin-bottom: 73px;
     overflow: auto;
 }
 
-.main-container::-webkit-scrollbar{
+.table-container::-webkit-scrollbar{
     display: none;
 }
 
@@ -65,7 +71,7 @@ th {
     width: 642px;
 }
 
-.table-head--checkbox, .body-head--arrowbox, .table-column--checkbox, .table-column--arrowbox, .website-section--checkbox {
+.table-head--checkbox, .body-head--arrowbox, .table-column--checkbox, .table-column--arrowbox, .website-section--checkbox, .pagination-arrowbox {
     box-sizing: border-box;
     position: absolute;
     left: 16px;
@@ -109,7 +115,7 @@ th {
     text-indent: 40px;
 }
 
-.body-head--arrowbox, .table-column--arrowbox {
+.body-head--arrowbox, .table-column--arrowbox, .pagination-arrowbox {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -276,7 +282,7 @@ th {
     font-size: 14px;
     line-height: 22px;
     color: #646569;
-    background: #ffffff80;
+    background: #ffffffCC;
 }
 
 .website-section:hover {
@@ -405,4 +411,129 @@ th {
 
 .active {
     display: table-row;
+}
+
+.pagination-container {
+    position: absolute;
+    left: 936px;
+    top: 843px;
+    width: 327px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.pagination-container  p {
+    margin: 0px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #646569;
+}
+
+.pagination-container > * {
+    position: absolute;
+}
+
+.pagination-menu--label {
+    left: 0px;
+}
+
+.pagination-items--label {
+    left: 163px;
+}
+
+.pagination-menu--button {
+    box-sizing: border-box;
+    left: 83px;
+    width: 47px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #F2F4F7 0%, #FFFFFF 50%);
+    border: 1px solid #EAEDF380;
+    border-radius: 4px;
+}
+
+.pagination-arrowbox {
+    left: 27px;
+}
+
+.pagination-menu--text {
+    text-indent: 8px;
+}
+
+.pagination-arrowbox > .arrow {
+    transform: rotate(0deg);
+    border-width: 3px 3px 0 3px;
+}
+
+.pagination-separator--1, .pagination-separator--2 {
+    width: 1px;
+    height: 20px;
+    background: #EAEDF3;
+    left: 146px;
+}
+
+.pagination-separator--2 {
+    left: 290px;
+}
+
+.previous-page--button, .next-page--button {
+    box-sizing: border-box;
+    height: 24px;
+    width: 24px;
+    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #F2F4F7 0%, #FFFFFF 50%);
+    border: 1px solid #EAEDF380;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.previous-page--button {
+    left: 254px;
+}
+
+.next-page--button {
+    left: 303px;
+}
+
+.pagination-arrow {
+    opacity: 0.5;
+}
+
+.pagination-dropdown--menu {
+    display: none;
+    z-index: 2;
+    box-sizing: border-box;
+    width: 126px;
+    height: 168px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 4px 16px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    right: 118px;
+    bottom: -17px;
+    padding: 4px 0px;
+}
+
+.pagination-menu--select {
+    text-indent: 16px;
+    width: 126px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.pagination-menu--select:not(:last-child) {
+    box-shadow: inset 0px -1px 0px #F0F2F5;
+}
+
+.pagination-dropdown--menu span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #3E3F42;
+    opacity: 0.9;
 }
