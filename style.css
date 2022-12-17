@@ -453,6 +453,7 @@ th {
     background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #F2F4F7 0%, #FFFFFF 50%);
     border: 1px solid #EAEDF380;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .pagination-arrowbox {

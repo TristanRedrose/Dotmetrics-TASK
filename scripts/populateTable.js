@@ -1,9 +1,3 @@
-const fetchWebsitesData = async() => {
-    return fetch("https://demo-api.dotmetrics.net/v1/public/organizations/list?pageSize=25&page=1", {method: "GET"})
-        .then(res => res.json())
-        .catch(err => console.warn("Something went wrong while fetching data", err));
-}
-
 const populateTableOrgranization = (index, organizationName) => {
     const table = document.querySelector(".main-table");
     const tableBody = document.createElement("tbody");
@@ -190,7 +184,8 @@ const populateTableWebgroup = (index, name, statusCode, sections) => {
 }
 
 const populateTable = async() => {
-    const websitesData = await fetchWebsitesData();
+    const websitesData = await fetchPaginatedWebsitesData();
+    setTotalCount(websitesData["total-count"]);
     websitesData.result.map((item, index) => {
         populateTableOrgranization(index, item.name);
         item.websites.map(item => {
@@ -201,10 +196,28 @@ const populateTable = async() => {
     console.log(websitesData);
 }
 
+const clearTable = () => {
+    const tableElements = document.querySelectorAll(".table-body");
+
+    tableElements.forEach(element => {
+        element.remove();
+    })
+}
+
+const loadNewPage = async() => {
+    clearTable();
+    await populateTable();
+    setPaginationItemsLabel();
+    addToggleEvents();
+}
+
 const pageInit = async() => {
     await populateTable();
 
     addToggleEvents();
+    setPaginationItemsLabel();
+    addPaginationMenuEvents();
+    addPaginationButtonEvents();
 }
 
 pageInit();

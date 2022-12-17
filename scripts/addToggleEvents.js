@@ -13,8 +13,6 @@ const toggleArrowActive = (element, setAsActive) => {
 const closeInnerSections = (element) => {
     let activeElements = element.querySelectorAll(".active");
     let activeArrows = element.querySelectorAll(".dropped");
-    console.log(activeElements);
-    console.log(activeArrows);
 
     if (activeElements.length !== 0) {
         activeElements.forEach(activeElement => {
@@ -58,7 +56,6 @@ const addSectionsToggle = (element) => {
             const arrow = webgroup.querySelector(".arrow");
             const sectionsHeader = webgroup.nextSibling;
             const websiteSections = sectionsHeader.nextSibling;
-
 
             if (sectionsHeader.className === `website-sections--header active`) {
                 toggleElementIsActive(sectionsHeader, false);
