@@ -14,7 +14,7 @@ const populateTableOrgranization = (index, organizationName) => {
             <div class="body-head--arrowbox">
                 <div class="${arrowClass}"></div>
             </div>
-            ${organizationName}
+            <span>${organizationName}</span>
         </th> 
     </tr>
     `;
@@ -43,7 +43,7 @@ const getWebsiteSectionHTML = (section) => {
     <div class="website-section">
         <div class="website-section--checkbox">
         </div>
-        ${section.name}
+        <span>${section.name}</span>
         <div class="website-section--iconbox" >
             <div class="status-icon ${status.icon}">
                 <div class="tooltip">
@@ -143,7 +143,7 @@ const populateTableWebgroup = (index, name, statusCode, sections) => {
             <div class="arrow"></div>
         </div>
         <img class="table-column--icon" src="./assets/icon.png" alt="webgroup-icon">
-        ${name}
+        <span>${name}</span>
     </td>
     <td class=body-row--column2>
         ${sections.length}
@@ -209,12 +209,14 @@ const loadNewPage = async() => {
     await populateTable();
     setPaginationItemsLabel();
     addToggleEvents();
+    addCheckboxEvents();
 }
 
 const pageInit = async() => {
     await populateTable();
 
     addToggleEvents();
+    addCheckboxEvents();
     setPaginationItemsLabel();
     addPaginationMenuEvents();
     addPaginationButtonEvents();

@@ -24,13 +24,19 @@ const setPaginationItemsLabel = () => {
 
 const addPaginationMenuEvents = () => {
     const menuButton = document.querySelector(".pagination-menu--button");
+    const menuButtonText = menuButton.querySelector(".pagination-menu--text");
     const menu = document.querySelector(".pagination-dropdown--menu");
     const selectButtons = menu.querySelectorAll(".pagination-menu--select");
-    const menuButtonText = menuButton.querySelector(".pagination-menu--text");
     
     menuButton.addEventListener('click', () => {
         menu.style.display = "block";
+        menu.setAttribute('tabindex', 0);
+        menu.focus();
     });
+
+    menu.addEventListener("focusout", () => {
+        menu.style.display = "none";
+    })
 
     selectButtons.forEach(selectButton => {
         selectButton.addEventListener('click', async() => {
@@ -46,9 +52,7 @@ const addPaginationMenuEvents = () => {
                 setPaginationItemsLabel();
                 await loadNewPage();
                 setAwaitCompletion(false);
-            } else {
-                menu.style.display = "none";
-            }  
+            }
         })
     })
 }

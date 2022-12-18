@@ -1,6 +1,12 @@
+@font-face {
+    font-family: Proxima-Nova;
+    src: url("./assets/ProximaNovaFont.otf");
+}
+
 body {
     margin: 0px;
     background-color: #f8f8fa;
+    font-family: Proxima-Nova;
 }
 
 .body-container {
@@ -24,8 +30,9 @@ body {
 }
 
 .fade {
-    position: sticky;
-    bottom: 0;
+    position: absolute;
+    bottom: 73px;
+    left:155px;
     width: 1110px;
     height: 12px;
     background: linear-gradient(180deg, rgba(248, 248, 250, 0) 0%, #F8F8FA 100%);
@@ -36,7 +43,6 @@ body {
     padding: 0px;
     width: 100%;
     border-spacing: 0px;
-    font-family: "proxima-nova", sans-serif;
 }
 
 .table-head--row {
@@ -46,16 +52,20 @@ body {
     height: 40px;
     background: #f8f8fa;
     box-shadow: inset 0px -0.997297px 0px #EAEDF3, inset 0.997297px 0px 0px #EAEDF3, inset -0.997297px 0px 0px #EAEDF3, inset 0px 0.997297px 0px #EAEDF3;
+    
+}
+
+.table-head--row th {
+    background: rgba(244, 245, 246, 0.4);
+}
+
+.table-head--row span {
     font-weight: 600;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #3E3F42;
-}
-
-.table-head--row th {
-    background: rgba(244, 245, 246, 0.4);
 }
 
 th {
@@ -66,7 +76,6 @@ th {
 }
 
 .table-column1 {
-    position: relative;
     text-indent: 48px;
     width: 642px;
 }
@@ -82,10 +91,17 @@ th {
     width: 16px;
 }
 
-.table-head--checkbox, .table-column--checkbox, .website-section--checkbox {
-    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #F6F7F9 0%, #FFFFFF 100%);
-    border: 1px solid #CED0DA;
-    border-radius: 3px;
+.table-head--checkbox, .table-column--checkbox, .website-section--checkbox {   
+    background-image:url("./assets/unchecked.png");
+}
+
+.checked {
+    background-image:url("./assets/checked.png");
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.indeterminate {
+    background-image:url("./assets/indeterminate.png");
 }
 
 .table-column2 {
@@ -517,6 +533,10 @@ th {
     right: 118px;
     bottom: -17px;
     padding: 4px 0px;
+}
+
+.pagination-dropdown--menu:focus {
+    outline:none;
 }
 
 .pagination-menu--select {
