@@ -209,14 +209,15 @@ const loadNewPage = async() => {
     await populateTable();
     setPaginationItemsLabel();
     addToggleEvents();
-    addCheckboxEvents();
+    initCheckBoxValues();
+    addWebgroupCheckBoxEvents();
 }
 
 const pageInit = async() => {
     await populateTable();
 
     addToggleEvents();
-    addCheckboxEvents();
+    addCheckBoxEvents();
     setPaginationItemsLabel();
     addPaginationMenuEvents();
     addPaginationButtonEvents();
