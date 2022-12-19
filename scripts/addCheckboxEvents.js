@@ -1,6 +1,6 @@
-const masterCheckBoxClassName = "table-head--checkbox";
-const webgroupCheckBoxClassName = "table-column--checkbox"
-const websiteCheckBoxClassName = "website-section--checkbox";
+const masterCheckBoxClassName = "table-head__checkbox";
+const webgroupCheckBoxClassName = "webgroup-column__checkbox"
+const websiteCheckBoxClassName = "website-section__checkbox";
 
 let masterCheckBox
 let sectionSelectors
@@ -23,10 +23,10 @@ const getActiveItemCount = (element, className) => {
 
 const setCheckboxStatus = (element, checkedStatus) => {
     let options = ["checked", "indeterminate", "unchecked"];
-    if (options.includes(checkedStatus) && checkedStatus === "unchecked") {
-        element.className = `${element.className.split(" ")[0]}`;
-    } else {
+    if (options.includes(checkedStatus) && checkedStatus !== "unchecked") {
         element.className = `${element.className.split(" ")[0]} ${checkedStatus}`;
+    } else {
+        element.className = `${element.className.split(" ")[0]}`;
     }
 }
 
@@ -42,7 +42,7 @@ const adjustElementCheckbox = (element, activeItems, allItems) => {
 
 const addMasterCheckBoxEvent = () => {
     masterCheckBox.addEventListener('click', () => {
-        if (masterCheckBox.className === `${masterCheckBoxClassName}`) {
+        if (masterCheckBox.className !== `${masterCheckBoxClassName} checked`) {
             setCheckboxStatus(masterCheckBox, "checked");
             activeSelectorsCount = sectionSelectorsCount;
             sectionSelectors.forEach(selector => {
@@ -65,10 +65,10 @@ const addMasterCheckBoxEvent = () => {
 }
 
 const addWebgroupCheckBoxEvents = () => {
-    const organizations = document.querySelectorAll(".table-body");
+    const organizations = document.querySelectorAll(".data-table__table-body");
 
     organizations.forEach(organization => {
-        const webgroups = organization.querySelectorAll(".body-row--webgroup");
+        const webgroups = organization.querySelectorAll(".table-body__webgroup-row");
 
         webgroups.forEach(webgroup => {
             const sectionSelector = webgroup.querySelector(`.${webgroupCheckBoxClassName}`);

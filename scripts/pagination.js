@@ -23,10 +23,10 @@ const setPaginationItemsLabel = () => {
 }
 
 const addPaginationMenuEvents = () => {
-    const menuButton = document.querySelector(".pagination-menu--button");
-    const menuButtonText = menuButton.querySelector(".pagination-menu--text");
-    const menu = document.querySelector(".pagination-dropdown--menu");
-    const selectButtons = menu.querySelectorAll(".pagination-menu--select");
+    const menuButton = document.querySelector(".pagination-container__menu-button");
+    const menuButtonText = menuButton.querySelector(".menu-button__current-items-per-page");
+    const menu = document.querySelector(".pagination-container__item-count-dropdown-menu");
+    const selectButtons = menu.querySelectorAll(".item-count-dropdown-menu__selector");
     
     menuButton.addEventListener('click', () => {
         menu.style.display = "block";
@@ -58,8 +58,8 @@ const addPaginationMenuEvents = () => {
 }
 
 const addPaginationButtonEvents = () => {
-    const nextPageButton = document.querySelector(".next-page--button");
-    const previousPageButton = document.querySelector(".previous-page--button");
+    const nextPageButton = document.querySelector(".pagination-container__page-button.pagination-container__page-button--right");
+    const previousPageButton = document.querySelector(".pagination-container__page-button");
     
     previousPageButton.addEventListener('click', async() => {
         if (page > 1 && !awaitCompletion) {
@@ -78,4 +78,10 @@ const addPaginationButtonEvents = () => {
             setAwaitCompletion(false);
         }
     })
+}
+
+const initPagination = () => {
+    setPaginationItemsLabel();
+    addPaginationMenuEvents();
+    addPaginationButtonEvents();
 }

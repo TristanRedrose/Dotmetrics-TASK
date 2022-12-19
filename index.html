@@ -14,18 +14,18 @@
 <body>
     <div class="body-container">
         <article class="table-container">
-            <table class="main-table">
-                <thead class="table-head">
-                    <tr class="table-head--row">
-                        <th class="table-column1">
-                            <div class="table-head--checkbox">
+            <table class="data-table">
+                <thead class="data-table__head">
+                    <tr class="table-head__row">
+                        <th class="head-row__column head-row_column--first-column">
+                            <div class="table-head__checkbox">
                             </div>
                             <span>Website</span>
                         </th>
-                        <th class="table-column2">
+                        <th class="head-row__column head-row_column--middle-column">
                             <span>Sections</span>
                         </th>
-                        <th class="table-column3">
+                        <th class="head-row__column head-row_column--last-column">
                             <span>Status</span>
                         </th>
                     </tr>
@@ -34,35 +34,35 @@
         </article>
         <div class="fade"></div>
         <div class="pagination-container">
-            <p class="pagination-menu--label">Show rows:</p>
-            <div class="pagination-menu--button">
-                <p class="pagination-menu--text">25</p>
-                <div class="pagination-arrowbox">
+            <p class="pagination-container__row-label">Show rows:</p>
+            <div class="pagination-container__menu-button">
+                <p class="menu-button__current-items-per-page">25</p>
+                <div class="menu-button__pagination-arrowbox">
                     <div class="arrow"></div>
                 </div>
             </div>
-            <div class="pagination-dropdown--menu">
-                <div class="pagination-menu--select">
+            <div class="pagination-container__item-count-dropdown-menu">
+                <div class="item-count-dropdown-menu__selector">
                     <span>25</span>
                 </div>
-                <div class="pagination-menu--select">
+                <div class="item-count-dropdown-menu__selector">
                     <span>50</span>
                 </div>
-                <div class="pagination-menu--select">
+                <div class="item-count-dropdown-menu__selector">
                     <span>100</span>
                 </div>
-                <div class="pagination-menu--select">
+                <div class="item-count-dropdown-menu__selector">
                     <span>150</span>
                 </div>
             </div>
-            <div class="pagination-separator--1"></div>
+            <div class="pagination-container__separator"></div>
             <p class="pagination-items--label">1 - 25 of </p>
-            <button class="previous-page--button">
-                <img class="pagination-arrow" src="./assets/arrow-left.png" alt="arrow-left">
+            <button class="pagination-container__page-button">
+                <img class="page-button__arrow" src="./assets/icons/arrow-left.png" alt="arrow-left">
             </button>
-            <div class="pagination-separator--2"></div>
-            <button class="next-page--button">
-                <img class="pagination-arrow" src="./assets/arrow-right.png" alt="arrow-right">
+            <div class="pagination-container__separator pagination-container__separator--right"></div>
+            <button class="pagination-container__page-button pagination-container__page-button--right">
+                <img class="page-button__arrow" src="./assets/icons/arrow-right.png" alt="arrow-right">
             </button>
         </div>
     </div>

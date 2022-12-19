@@ -28,13 +28,13 @@ const closeInnerSections = (element) => {
 }
 
 const addWebgroupToggle = () => {
-    const organizations = document.querySelectorAll(".body-row--organization");
+    const organizations = document.querySelectorAll(".table-body__organization-row");
 
     organizations.forEach(organization => {
         organization.addEventListener('click', () => {
             const parentElement = organization.parentNode;
             const arrow = parentElement.querySelector(".arrow");
-            const webgroups = parentElement.querySelectorAll(".body-row--webgroup");
+            const webgroups = parentElement.querySelectorAll(".table-body__webgroup-row");
 
             if (parentElement.querySelectorAll(".active").length !== 0) {
                 closeInnerSections(parentElement)
@@ -49,7 +49,7 @@ const addWebgroupToggle = () => {
 };
 
 const addSectionsToggle = (element) => {
-    const webgroups = document.querySelectorAll(".body-row--webgroup");
+    const webgroups = document.querySelectorAll(".table-body__webgroup-row");
 
     webgroups.forEach(webgroup => {
         webgroup.addEventListener('click', () => {
@@ -57,7 +57,7 @@ const addSectionsToggle = (element) => {
             const sectionsHeader = webgroup.nextSibling;
             const websiteSections = sectionsHeader.nextSibling;
 
-            if (sectionsHeader.className === `website-sections--header active`) {
+            if (sectionsHeader.className === `webgroup-row__website-section-header active`) {
                 toggleElementIsActive(sectionsHeader, false);
                 toggleElementIsActive(websiteSections, false);
                 if (arrow.className !== `arrow`) toggleArrowActive(arrow, false);
