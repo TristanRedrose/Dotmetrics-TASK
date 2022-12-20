@@ -16,24 +16,32 @@ function initCheckBoxValues() {
         totalBoxCount: webgroupCheckBoxes.length,
         activeBoxCount: 0
     };
-    webgroupCheckBoxCount.activeBoxCount = getActiveItemCount(document, `${webgroupCheckBoxClassName}`);
-    updateElementCheckBox(masterCheckBox, webgroupCheckBoxCount);
+    updateHeaderCheckBox();
 }
 
 function getActiveItemCount (element, className) {
-    return element.querySelectorAll(`.${className}.checked`).length;
+    return element.querySelectorAll(`.${className}.${className}--checked`).length;
 }
 
 function setCheckBoxStatus (element, checkedStatus) {
     let options = ["checked", "indeterminate", "unchecked"];
     if (options.includes(checkedStatus) && checkedStatus !== "unchecked") {
-        element.className = `${element.className.split(" ")[0]} ${checkedStatus}`;
+        element.className = `${element.className.split(" ")[0]} ${element.className.split(" ")[0]}--${checkedStatus}`;
     } else {
         element.className = `${element.className.split(" ")[0]}`;
     }
 }
 
-function updateElementCheckBox (element, checkBoxCount) {
+function updateHeaderCheckBox () {
+    const {totalBoxCount, activeBoxCount} = webgroupCheckBoxCount;
+    if (totalBoxCount === activeBoxCount) {
+        setCheckBoxStatus(masterCheckBox, "checked");
+    } else {
+        setCheckBoxStatus(masterCheckBox, "unchecked");
+    }
+}
+
+function updateWebgroupCheckBox (element, checkBoxCount) {
     const {totalBoxCount, activeBoxCount} = checkBoxCount
     if (totalBoxCount === activeBoxCount) {
         setCheckBoxStatus(element, "checked");
@@ -46,7 +54,7 @@ function updateElementCheckBox (element, checkBoxCount) {
 
 function addMasterCheckBoxEvent () {
     masterCheckBox.addEventListener('click', () => {
-        if (masterCheckBox.className !== `${masterCheckBoxClassName} checked`) {
+        if (masterCheckBox.className !== `${masterCheckBoxClassName} ${masterCheckBoxClassName}--checked`) {
             setCheckBoxStatus(masterCheckBox, "checked");
             webgroupCheckBoxCount.activeBoxCount = webgroupCheckBoxes.length;
             webgroupCheckBoxes.forEach(selector => {
@@ -89,32 +97,32 @@ function addWebgroupCheckBoxEvents() {
                     if (checkBox.className === `${websiteCheckBoxClassName}`) {
                         setCheckBoxStatus(checkBox, "checked");
                         websiteCheckBoxCount.activeBoxCount = getActiveItemCount(section,`${websiteCheckBoxClassName}`);
-                        updateElementCheckBox(sectionSelector, websiteCheckBoxCount);
+                        updateWebgroupCheckBox(sectionSelector, websiteCheckBoxCount);
                         webgroupCheckBoxCount.activeBoxCount = getActiveItemCount(document, `${webgroupCheckBoxClassName}`);
-                        updateElementCheckBox(masterCheckBox, webgroupCheckBoxCount);
+                        updateHeaderCheckBox();
                     } else {
                         setCheckBoxStatus(checkBox, "unchecked");
                         websiteCheckBoxCount.activeBoxCount = getActiveItemCount(section,`${websiteCheckBoxClassName}`);
-                        updateElementCheckBox(sectionSelector, websiteCheckBoxCount);
+                        updateWebgroupCheckBox(sectionSelector, websiteCheckBoxCount);
                         webgroupCheckBoxCount.activeBoxCount = getActiveItemCount(document, `${webgroupCheckBoxClassName}`);
-                        updateElementCheckBox(masterCheckBox, webgroupCheckBoxCount);
+                        updateHeaderCheckBox();
                     }
                 })
             })
             
             sectionSelector.addEventListener('click', event => {
                 event.stopPropagation();
-                if (sectionSelector.className !== `${webgroupCheckBoxClassName} checked`) {
+                if (sectionSelector.className !== `${webgroupCheckBoxClassName} ${webgroupCheckBoxClassName}--checked`) {
                     setCheckBoxStatus(sectionSelector, "checked");
                     webgroupCheckBoxCount.activeBoxCount++;
-                    updateElementCheckBox(masterCheckBox, webgroupCheckBoxCount);
+                    updateHeaderCheckBox();
                     checkBoxes.forEach(checkBox => {
                         setCheckBoxStatus(checkBox, "checked");
                     })
                 } else {
                     setCheckBoxStatus(sectionSelector, "unchecked");
                     webgroupCheckBoxCount.activeBoxCount--;
-                    updateElementCheckBox(masterCheckBox, webgroupCheckBoxCount);
+                    updateHeaderCheckBox();
                     checkBoxes.forEach(checkBox => {
                         setCheckBoxStatus(checkBox, "unchecked");
                     })

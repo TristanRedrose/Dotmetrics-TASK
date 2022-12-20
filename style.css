@@ -96,12 +96,12 @@ body {
     background-image:url("./assets/icons/unchecked.png");
 }
 
-.checked {
+.table-head__checkbox--checked, .webgroup-column__checkbox--checked, .website-section__checkbox--checked {
     background-image:url("./assets/icons/checked.png");
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.indeterminate {
+.table-head__checkbox--indeterminate, .webgroup-column__checkbox--indeterminate, .website-section__checkbox--indeterminate {
     background-image:url("./assets/icons/indeterminate.png");
 }
 
@@ -147,7 +147,7 @@ body {
     transform: rotate(-90deg);
 }
 
-.dropped {
+.arrow--active {
     border-color: #0068ED transparent transparent transparent;
     transform: rotate(0deg);
 }
@@ -475,7 +475,7 @@ body {
     left: 27px;
 }
 
-.menu-button__current-items-per-page {
+.menu-button__item-counter {
     text-indent: 8px;
 }
 
@@ -531,8 +531,12 @@ body {
     padding: 4px 0px;
 }
 
+.pagination-container__item-count-dropdown-menu--active {
+    display: block;
+}
+
 .pagination-container__item-count-dropdown-menu:focus {
-    outline:none;
+    outline: none;
 }
 
 .item-count-dropdown-menu__selector {

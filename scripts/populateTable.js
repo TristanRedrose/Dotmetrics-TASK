@@ -5,7 +5,7 @@ function populateTableOrgranization(index, organizationName) {
 
     let arrowClass =  index 
         ? "arrow"
-        : "arrow dropped";
+        : "arrow arrow--active";
 
     const organizationRow = 
     `

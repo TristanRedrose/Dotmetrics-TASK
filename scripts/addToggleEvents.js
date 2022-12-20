@@ -1,3 +1,6 @@
+const organizationRowClassName = "table-body__organization-row";
+const webgroupRowClassName = "table-body__webgroup-row";
+
 function toggleElementIsActive(element, setAsActive) {
     element.className = setAsActive
         ? element.className + " active"
@@ -6,13 +9,13 @@ function toggleElementIsActive(element, setAsActive) {
 
 function toggleArrowActive(element, setAsActive) {
     element.className = setAsActive
-        ? element.className + " dropped"
-        : element.className.replace(" dropped", "");
+        ? `${element.className.split(" ")[0]} ${element.className.split(" ")[0]}--active`
+        : `${element.className.split(" ")[0]}`;
 }
 
 function closeInnerSections(element) {
     let activeElements = element.querySelectorAll(".active");
-    let activeArrows = element.querySelectorAll(".dropped");
+    let activeArrows = element.querySelectorAll(".arrow--active");
 
     if (activeElements.length !== 0) {
         activeElements.forEach(activeElement => {
@@ -28,20 +31,20 @@ function closeInnerSections(element) {
 }
 
 function addWebgroupToggle() {
-    const organizations = document.querySelectorAll(".table-body__organization-row");
+    const organizations = document.querySelectorAll(`.${organizationRowClassName}`);
 
     organizations.forEach(organization => {
         organization.addEventListener('click', () => {
             const parentElement = organization.parentNode;
             const arrow = parentElement.querySelector(".arrow");
-            const webgroups = parentElement.querySelectorAll(".table-body__webgroup-row");
+            const webgroups = parentElement.querySelectorAll(`.${webgroupRowClassName}`);
 
             if (parentElement.querySelectorAll(".active").length !== 0) {
                 closeInnerSections(parentElement)
             } else {
                 webgroups.forEach(webgroup => {
                     toggleElementIsActive(webgroup, true);
-                    if (arrow.className !== "arrow dropped") toggleArrowActive(arrow, true);  
+                    if (arrow.className !== "arrow arrow--active") toggleArrowActive(arrow, true);  
                 })
             }
         })
@@ -49,7 +52,7 @@ function addWebgroupToggle() {
 };
 
 function addSectionsToggle(element) {
-    const webgroups = document.querySelectorAll(".table-body__webgroup-row");
+    const webgroups = document.querySelectorAll(`.${webgroupRowClassName}`);
 
     webgroups.forEach(webgroup => {
         webgroup.addEventListener('click', () => {
@@ -64,7 +67,7 @@ function addSectionsToggle(element) {
             } else {
                 toggleElementIsActive(sectionsHeader, true);
                 toggleElementIsActive(websiteSections, true);
-                if (arrow.className !== `arrow dropped`) toggleArrowActive(arrow, true);
+                if (arrow.className !== `arrow arrow--active`) toggleArrowActive(arrow, true);
             }
         })
     })

@@ -24,18 +24,18 @@ function setPaginationItemsLabel() {
 
 function addPaginationMenuEvents() {
     const menuButton = document.querySelector(".pagination-container__menu-button");
-    const menuButtonText = menuButton.querySelector(".menu-button__current-items-per-page");
+    const menuButtonText = menuButton.querySelector(".menu-button__item-counter");
     const menu = document.querySelector(".pagination-container__item-count-dropdown-menu");
     const selectButtons = menu.querySelectorAll(".item-count-dropdown-menu__selector");
     
     menuButton.addEventListener('click', () => {
-        menu.style.display = "block";
+        menu.className = `${menu.className.split(" ")[0]} ${menu.className.split(" ")[0]}--active`
         menu.setAttribute('tabindex', 0);
         menu.focus();
     });
 
     menu.addEventListener("focusout", () => {
-        menu.style.display = "none";
+        menu.className = `${menu.className.split(" ")[0]}`
     })
 
     selectButtons.forEach(selectButton => {
@@ -45,7 +45,7 @@ function addPaginationMenuEvents() {
 
             if (selectButtonText !== menuButtonText.innerText) {
                 setAwaitCompletion(true);
-                menu.style.display = "none";
+                menu.className = `${menu.className.split(" ")[0]}`
                 itemsPerPage = selectButton.querySelector("span").innerText;
                 menuButtonText.innerText = itemsPerPage;
                 page = 1;
