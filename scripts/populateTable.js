@@ -1,4 +1,4 @@
-const populateTableOrgranization = (index, organizationName) => {
+function populateTableOrgranization(index, organizationName) {
     const table = document.querySelector(".data-table");
     const tableBody = document.createElement("tbody");
     tableBody.className = "data-table__table-body";
@@ -23,7 +23,7 @@ const populateTableOrgranization = (index, organizationName) => {
     table.appendChild(tableBody);
 }
 
-const getStatus = (statusCode) => {
+function getStatus(statusCode) {
     const status = [
         {label:"N/A", icon:"blank"},
         {label:"Operational", icon:"green"},
@@ -36,7 +36,7 @@ const getStatus = (statusCode) => {
     return status[+statusCode];
 }
 
-const getWebsiteSectionHTML = (section) => {
+function getWebsiteSectionHTML(section)  {
     const status = getStatus(section.status);
     const websiteSection =
     `
@@ -77,7 +77,7 @@ const getWebsiteSectionHTML = (section) => {
     return websiteSection;
 }
 
-const addSectionsGroup = (sectionsGroup) => {
+function addSectionsGroup(sectionsGroup) {
     let groupedSections = 
     `
     <div class="body-container__websites-group">
@@ -88,7 +88,7 @@ const addSectionsGroup = (sectionsGroup) => {
     return groupedSections;
 }
 
-const getAllSectionsHTML = (sections) => {
+function getAllSectionsHTML(sections) {
     let websiteSectionsHTML = ``
     let sectionsGroup = ``
     sections.map((section, index) => {
@@ -125,7 +125,7 @@ const getAllSectionsHTML = (sections) => {
     return websiteSectionsHTML;
 }
 
-const populateTableWebgroup = (index, name, statusCode, sections) => {
+function populateTableWebgroup(index, name, statusCode, sections) {
     const status = getStatus(statusCode)
     const tables = document.querySelectorAll(".data-table__table-body");
     const container = tables[tables.length - 1];
@@ -183,7 +183,7 @@ const populateTableWebgroup = (index, name, statusCode, sections) => {
     container.appendChild(websiteSections);
 }
 
-const populateTable = async() => {
+async function populateTable() {
     const websitesData = await fetchPaginatedWebsitesData();
     setTotalCount(websitesData["total-count"]);
     websitesData.result.map((item, index) => {
@@ -196,7 +196,7 @@ const populateTable = async() => {
     console.log(websitesData);
 }
 
-const clearTable = () => {
+function clearTable() {
     const tableElements = document.querySelectorAll(".data-table__table-body");
 
     tableElements.forEach(element => {
@@ -204,7 +204,7 @@ const clearTable = () => {
     })
 }
 
-const loadNewPage = async() => {
+async function loadNewPage() {
     clearTable();
     await populateTable();
     setPaginationItemsLabel();
@@ -213,7 +213,7 @@ const loadNewPage = async() => {
     addWebgroupCheckBoxEvents();
 }
 
-const pageInit = async() => {
+async function pageInit() {
     await populateTable();
     addToggleEvents();
     addCheckBoxEvents();

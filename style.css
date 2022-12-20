@@ -19,7 +19,7 @@ body {
 }
 
 .table-container {
-    width: 1110px;
+    width: 1420px;
     height: 776px;
     margin-top: 51px;
     overflow: auto;
@@ -41,8 +41,9 @@ body {
 
 .data-table {
     padding: 0px;
-    width: 100%;
+    width: 1110px;
     border-spacing: 0px;
+    margin:0 auto;
 }
 
 .table-head__row {
@@ -211,7 +212,6 @@ body {
 }
 
 .icon-box__status-icon {
-    position: relative;
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -301,7 +301,7 @@ body {
     background: #ffffffCC;
 }
 
-.website-section:hover {
+.websites-group__website-section:hover {
     background: #F6F9FD;
 }
 
@@ -317,7 +317,6 @@ body {
 }
 
 .hover-menu__container {
-    position: relative;
     height: 24px;
     width: 24px;
     display: flex;

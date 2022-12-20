@@ -1,16 +1,16 @@
-const toggleElementIsActive = (element, setAsActive) => {
+function toggleElementIsActive(element, setAsActive) {
     element.className = setAsActive
         ? element.className + " active"
         : element.className.replace(" active", "");
 }
 
-const toggleArrowActive = (element, setAsActive) => {
+function toggleArrowActive(element, setAsActive) {
     element.className = setAsActive
         ? element.className + " dropped"
         : element.className.replace(" dropped", "");
 }
 
-const closeInnerSections = (element) => {
+function closeInnerSections(element) {
     let activeElements = element.querySelectorAll(".active");
     let activeArrows = element.querySelectorAll(".dropped");
 
@@ -27,7 +27,7 @@ const closeInnerSections = (element) => {
     }
 }
 
-const addWebgroupToggle = () => {
+function addWebgroupToggle() {
     const organizations = document.querySelectorAll(".table-body__organization-row");
 
     organizations.forEach(organization => {
@@ -48,7 +48,7 @@ const addWebgroupToggle = () => {
     })
 };
 
-const addSectionsToggle = (element) => {
+function addSectionsToggle(element) {
     const webgroups = document.querySelectorAll(".table-body__webgroup-row");
 
     webgroups.forEach(webgroup => {
@@ -70,7 +70,7 @@ const addSectionsToggle = (element) => {
     })
 }
 
-const addToggleEvents = () => {
+function addToggleEvents() {
     addWebgroupToggle();
     addSectionsToggle();
 }

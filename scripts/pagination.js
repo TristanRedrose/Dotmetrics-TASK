@@ -3,26 +3,26 @@ let itemsPerPage = 25;
 let totalCount = 0;
 let awaitCompletion = false;
 
-const fetchPaginatedWebsitesData = async() => {
+async function fetchPaginatedWebsitesData() {
     return fetch(`https://demo-api.dotmetrics.net/v1/public/organizations/list?pageSize=${itemsPerPage}&page=${page}`, {method: "GET"})
         .then(res => res.json())
         .catch(err => console.warn("Something went wrong while fetching data", err));
 }
 
-const setTotalCount = (itemCount) => {
+function setTotalCount(itemCount) {
     totalCount = itemCount;
 }
 
-const setAwaitCompletion = (completionPending) => {
+function setAwaitCompletion(completionPending) {
     awaitCompletion = completionPending;
 }
 
-const setPaginationItemsLabel = () => {
+function setPaginationItemsLabel() {
     const label = document.querySelector(".pagination-items--label");
     label.innerText = `${(page - 1)*itemsPerPage + 1} - ${(page * itemsPerPage < totalCount) ? page * itemsPerPage : totalCount} of ${totalCount}`;
 }
 
-const addPaginationMenuEvents = () => {
+function addPaginationMenuEvents() {
     const menuButton = document.querySelector(".pagination-container__menu-button");
     const menuButtonText = menuButton.querySelector(".menu-button__current-items-per-page");
     const menu = document.querySelector(".pagination-container__item-count-dropdown-menu");
@@ -57,7 +57,7 @@ const addPaginationMenuEvents = () => {
     })
 }
 
-const addPaginationButtonEvents = () => {
+function addPaginationButtonEvents() {
     const nextPageButton = document.querySelector(".pagination-container__page-button.pagination-container__page-button--right");
     const previousPageButton = document.querySelector(".pagination-container__page-button");
     
@@ -80,7 +80,7 @@ const addPaginationButtonEvents = () => {
     })
 }
 
-const initPagination = () => {
+function initPagination () {
     setPaginationItemsLabel();
     addPaginationMenuEvents();
     addPaginationButtonEvents();
