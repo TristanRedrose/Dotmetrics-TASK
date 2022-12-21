@@ -19,7 +19,10 @@ function setAwaitCompletion(completionPending) {
 
 function setPaginationItemsLabel() {
     const label = document.querySelector(".pagination-items--label");
-    label.innerText = `${(page - 1)*itemsPerPage + 1} - ${(page * itemsPerPage < totalCount) ? page * itemsPerPage : totalCount} of ${totalCount}`;
+    let hyphen = (page * itemsPerPage) < 100
+    ? "\u2014"
+    : "-";
+    label.innerText = `${(page - 1)*itemsPerPage + 1} ${hyphen} ${(page * itemsPerPage < totalCount) ? page * itemsPerPage : totalCount} of ${totalCount}`;
 }
 
 function addPaginationMenuEvents() {

@@ -1,0 +1,112 @@
+@use "../abstracts" as *;
+
+.pagination-container {
+    position: absolute;
+    left: 936px;
+    top: 843px;
+    width: 327px;
+    height: 24px;
+    @include flexCenter-Y();
+    p {
+        @include paginationMainText();
+    }
+    
+}
+
+.pagination-container > * {
+    position: absolute;
+}
+
+.pagination-container__row-label {
+    left: 0px;
+}
+
+.pagination-items--label {
+    left: 163px;
+}
+
+.pagination-container__menu-button {
+    box-sizing: border-box;
+    left: 83px;
+    width: 47px;
+    height: 24px;
+    @include flexCenter-Y;
+    background: $pagination-button-background;
+    border: 1px solid rgba($shade6, 0.8);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.menu-button__pagination-arrowbox {
+    left: 27px;
+}
+
+.menu-button__item-counter {
+    text-indent: 8px;
+}
+
+.menu-button__pagination-arrowbox > .arrow {
+    transform: rotate(0deg);
+    border-width: 3px 3px 0 3px;
+}
+
+.pagination-container__separator {
+    width: 1px;
+    height: 20px;
+    background: $shade6;
+    left: 146px;
+}
+
+.pagination-container__separator--right {
+    left: 290px;
+}
+
+.pagination-container__page-button {
+    box-sizing: border-box;
+    height: 24px;
+    width: 24px;
+    background: $pagination-button-background;
+    border: 1px solid rgba($shade6, 0.8);
+    border-radius: 4px;
+    @include flexCenter();
+    cursor: pointer;
+    left:254px
+}
+
+.pagination-container__page-button--right {
+    left: 303px;
+}
+
+.pagination-container__item-count-dropdown-menu {
+    display: none;
+    z-index: 2;
+    box-sizing: border-box;
+    width: 126px;
+    height: 168px;
+    background: $shade10;
+    box-shadow: $menu-box-shadow;
+    border-radius: 4px;
+    right: 118px;
+    bottom: -17px;
+    padding: 4px 0px;
+    &:focus {
+        outline: none;
+    }
+    span {
+        @include paginationMenuText();
+    }
+}
+
+.pagination-container__item-count-dropdown-menu--active {
+    display: block;
+}
+
+.item-count-dropdown-menu__selector {
+    text-indent: 16px;
+    width: 126px;
+    height: 40px;
+    @include flexCenter-Y();
+    &:not(:last-child) {
+        box-shadow: inset 0px -1px 0px #F0F2F5;
+    }
+}

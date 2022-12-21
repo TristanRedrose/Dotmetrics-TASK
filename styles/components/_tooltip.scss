@@ -1,0 +1,36 @@
+@use "../abstracts" as *;
+
+.website-section__icon-box {
+    left:225px;
+    &:hover .status-icon__tooltip {
+        display: flex;
+    }
+}
+
+.status-icon__tooltip {
+    z-index: 2;
+    position: absolute;
+    box-sizing: border-box;
+    background: $shade2;
+    border-radius: 2px;
+    width: fit-content;
+    padding: 0px 8px;
+    height: 26px;
+    @include tooltipText();
+    align-items: center;
+    justify-content: center;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    &::after {
+        position: absolute;
+        z-index: 1;
+        content: "";
+        width: 6px;
+        height: 6px;
+        top: -3px;
+        background: $shade2;
+        transform: rotate(45deg);
+    }
+}

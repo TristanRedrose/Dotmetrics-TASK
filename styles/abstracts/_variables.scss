@@ -1,0 +1,15 @@
+$shade1: #202124;
+$shade2: #3E3F42;
+$shade3: #646569;
+$shade4: #9EA0A5;
+$shade5: #CED0DA;
+$shade6: #EAEDF3;
+$shade7: #0068ED;
+$shade8: #F6F9FD;
+$shade9: #F8F8FA;
+$shade10: #FFFFFF;
+
+$box-shadow: inset 1px 0px 0px $shade6, inset -1px 0px 0px $shade6, inset 0px -1px 0px $shade6;
+$menu-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 4px 16px rgba(0, 0, 0, 0.15);
+$pagination-button-background: linear-gradient(0deg, #FFFFFF80, #FFFFFF80), linear-gradient(0deg, #F2F4F780 0%, #FFFFFF80 100%);
+$website-section-background: linear-gradient(0deg, rgba(234, 237, 243, 0.4), rgba(234, 237, 243, 0.4)), $shade10;
