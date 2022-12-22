@@ -77,7 +77,7 @@ function getWebsiteSectionHTML(section)  {
     return websiteSection;
 }
 
-function addSectionsGroup(sectionsGroup) {
+function getGroupedSectionsHTML(sectionsGroup) {
     let groupedSections = 
     `
     <div class="body-container__websites-group">
@@ -93,24 +93,24 @@ function getAllSectionsHTML(sections) {
     let sectionsGroup = ``
     sections.map((section, index) => {
         if (sections.length - 1 === 0) {
-            websiteSectionsHTML += addSectionsGroup(getWebsiteSectionHTML(section));
+            websiteSectionsHTML += getGroupedSectionsHTML(getWebsiteSectionHTML(section));
         } else if (index % 4 === 0 && index === sections.length -1) {
-            websiteSectionsHTML += addSectionsGroup(sectionsGroup) ;
+            websiteSectionsHTML += getGroupedSectionsHTML(sectionsGroup) ;
 
             sectionsGroup = 
             `
             ${getWebsiteSectionHTML(section)}
             `;
 
-            websiteSectionsHTML += addSectionsGroup(sectionsGroup);
+            websiteSectionsHTML += getGroupedSectionsHTML(sectionsGroup);
 
         } else if (index === sections.length - 1) {
             sectionsGroup += getWebsiteSectionHTML(section);
 
-            websiteSectionsHTML += addSectionsGroup(sectionsGroup);
+            websiteSectionsHTML += getGroupedSectionsHTML(sectionsGroup);
 
         } else if (index > 0 && index % 4 === 0) {
-            websiteSectionsHTML += addSectionsGroup(sectionsGroup) ;
+            websiteSectionsHTML += getGroupedSectionsHTML(sectionsGroup) ;
 
             sectionsGroup = 
             `
