@@ -17,6 +17,13 @@ function setAwaitCompletion(completionPending) {
     awaitCompletion = completionPending;
 }
 
+function initPaginationContainer() {
+    const container = document.querySelector(".pagination-container");
+    if (container.className !== ".pagination-container.pagination-container--active" && totalCount > 25 ){
+        container.className = "pagination-container pagination-container--active";
+    }
+}
+
 function setPaginationItemsLabel() {
     const label = document.querySelector(".pagination-items--label");
     let hyphen = (page * itemsPerPage) < 100
@@ -84,6 +91,7 @@ function addPaginationButtonEvents() {
 }
 
 function initPagination () {
+    initPaginationContainer();
     setPaginationItemsLabel();
     addPaginationMenuEvents();
     addPaginationButtonEvents();

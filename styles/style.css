@@ -289,7 +289,6 @@ body {
   box-shadow: inset 0px 1px 0px #EAEDF3, inset 1px 0px 0px #EAEDF3, inset -1px 0px 0px #EAEDF3, inset 0px -1px 0px #EAEDF3;
   display: flex;
   align-items: center;
-  text-indent: 48px;
   font-weight: 500;
   font-size: 14px;
   color: #646569;
@@ -298,6 +297,12 @@ body {
 }
 .websites-group__website-section:hover {
   background: #F6F9FD;
+}
+.websites-group__website-section span {
+  position: absolute;
+  left: 48px;
+  max-width: 160px;
+  line-height: 22px;
 }
 
 .active {
@@ -424,12 +429,17 @@ body {
   height: 24px;
   display: flex;
   align-items: center;
+  display: none;
 }
 .pagination-container p {
   margin: 0px;
   font-weight: 500;
   font-size: 13px;
   color: #646569;
+}
+
+.pagination-container--active {
+  display: flex;
 }
 
 .pagination-container > * {

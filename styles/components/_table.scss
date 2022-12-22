@@ -271,11 +271,16 @@ body {
     height:56px;
     box-shadow: inset 0px 1px 0px $shade6, $box-shadow;
     @include flexCenter-Y();
-    text-indent: 48px;
     @include webgroupRowText();
     background: rgba($shade10, 0.8);
     &:hover {
         background: $shade8;
+    }
+    & span {
+        position:absolute;
+        left:48px;
+        max-width: 160px;
+        line-height: 22px;
     }
 }
 

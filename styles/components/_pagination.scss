@@ -7,10 +7,14 @@
     width: 327px;
     height: 24px;
     @include flexCenter-Y();
+    display: none;
     p {
         @include paginationMainText();
     }
-    
+}
+
+.pagination-container--active {
+    display: flex;
 }
 
 .pagination-container > * {

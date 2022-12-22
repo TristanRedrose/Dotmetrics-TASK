@@ -192,8 +192,6 @@ async function populateTable() {
             populateTableWebgroup(index, item.name, item.status, item.sections)
         });
     });
-
-    console.log(websitesData);
 }
 
 function clearTable() {
