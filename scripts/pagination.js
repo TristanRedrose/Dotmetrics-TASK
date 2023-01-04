@@ -4,9 +4,10 @@ let totalCount = 0;
 let awaitCompletion = false;
 
 async function fetchPaginatedWebsitesData() {
-    return fetch(`https://demo-api.dotmetrics.net/v1/public/organizations/list?pageSize=${itemsPerPage}&page=${page}`, {method: "GET"})
-        .then(res => res.json())
-        .catch(err => console.warn("Something went wrong while fetching data", err));
+    const results = mocklist.result.filter((item, index) => (index >= ((page -1) * itemsPerPage)) && (index < ((page) * itemsPerPage)));
+
+    setTotalCount(mocklist.result.length);
+    return results;
 }
 
 function setTotalCount(itemCount) {

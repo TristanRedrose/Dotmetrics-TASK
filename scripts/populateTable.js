@@ -185,8 +185,7 @@ function populateTableWebgroup(index, name, statusCode, sections) {
 
 async function populateTable() {
     const websitesData = await fetchPaginatedWebsitesData();
-    setTotalCount(websitesData["total-count"]);
-    websitesData.result.map((item, index) => {
+    websitesData.map((item, index) => {
         populateTableOrgranization(index, item.name);
         item.websites.map(item => {
             populateTableWebgroup(index, item.name, item.status, item.sections)
