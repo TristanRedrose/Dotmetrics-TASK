@@ -3,8 +3,16 @@ let itemsPerPage = 25;
 let totalCount = 0;
 let awaitCompletion = false;
 
+function getDelayedResults() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(mocklist.result.filter((item, index) => (index >= ((page -1) * itemsPerPage)) && (index < ((page) * itemsPerPage))));
+      }, 300);
+    });
+ }
+
 async function fetchPaginatedWebsitesData() {
-    const results = mocklist.result.filter((item, index) => (index >= ((page -1) * itemsPerPage)) && (index < ((page) * itemsPerPage)));
+    const results = await getDelayedResults();
 
     setTotalCount(mocklist.result.length);
     return results;
